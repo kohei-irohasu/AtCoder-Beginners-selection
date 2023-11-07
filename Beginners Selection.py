@@ -1,15 +1,15 @@
-#Product
+#1 Product
 a, b = map(int, input().split())
 print('Even') if (a * b) % 2 ==0 else print('Odd')
 
 
-#Placing Marbles
+#2 Placing Marbles
 n = input()
 total = sum(int(i) for i in n)
 print(total)
 
 
-#Shift only
+#3 Shift only
 n = int(input())
 A = list(map(int, input().split()))
 res = 0
@@ -24,7 +24,7 @@ while True:
 print(res)
 
 
-#Coins
+#4 Coins
 A = [int(input()) for _ in range(4)]
 res = 0
 
@@ -35,3 +35,79 @@ for i in range(A[0] + 1):
                 res += 1
 
 print(res)
+
+
+#5 Some Sums
+def findSum(n):
+    sum = 0
+    while n > 0:
+        sum += n % 10
+        n //= 10
+    return sum
+
+N, A, B = map(int, input().split())
+total = 0
+
+for i in range(1, N + 1):
+    sum = findSum(i)
+    if sum >= A and sum <= B:
+        total += i
+
+print(total)
+
+
+#6 Card Game for Two
+N = int(input())
+a = list(map(int, input().split()))
+
+a.sort(reverse=True)
+Alice = sum(a[i] for i in range(0, N, 2))
+Bob = sum(a[i] for i in range(1, N, 2))
+
+result = Alice - Bob
+print(result)
+
+
+#7 Kagami Mochi
+N = int(input())
+d = [int(input()) for _ in range(N)]
+
+num = [0] * 110
+
+for i in range(N):
+    num[d[i]] += 1
+
+res = 0
+for i in range(1, 101):
+    if num[i] > 0:
+        res += 1
+
+print(res)
+
+#7 別解
+N = int(input())
+d = [int(input()) for _ in range(N)]
+
+values = set()
+
+for i in range(N):
+    values.add(d[i])
+
+print(len(values))
+
+
+#8 Otoshidama
+N, Y = map(int, input().split())
+res10000, res5000, res1000 = -1, -1, -1
+
+for a in range(N + 1):
+    for b in range(N - a + 1):
+        c = N - a - b
+        total = 10000 * a + 5000 * b + 1000 * c
+        if total == Y:
+            res10000, res5000, res1000 = a, b, c
+
+print(res10000, res5000, res1000)
+
+
+#9 白昼夢
