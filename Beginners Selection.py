@@ -111,3 +111,27 @@ print(res10000, res5000, res1000)
 
 
 #9 白昼夢
+divide = ["dream", "dreamer", "erase", "eraser"]
+
+S = input()
+S = S[::-1]
+divide = [d[::-1] for d in divide]
+
+can = True
+i = 0
+while i < len(S):
+    can2 = False
+    for j in range(4):
+        d = divide[j]
+        if S.startswith(d, i):
+            can2 = True
+            i += len(d)
+            break
+    if not can2:
+        can = False
+        break
+
+print('YES') if can else print('NO')
+
+
+#10 Traveling
