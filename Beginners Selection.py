@@ -10,31 +10,32 @@ print(total)
 
 
 #3 Shift only
-n = int(input())
+N = int(input())
 A = list(map(int, input().split()))
-res = 0
+
+count = 0
 while True:
     exist_odd = any(i % 2 != 0 for i in A)
-    
     if exist_odd:
         break
-    
     A = [i // 2 for i in A]
-    res += 1
-print(res)
+    count += 1
+
+print(count)
+        
 
 
 #4 Coins
 A = [int(input()) for _ in range(4)]
-res = 0
+count = 0
 
 for i in range(A[0] + 1):
     for j in range(A[1] + 1):
         for k in range(A[2] + 1):
             if 500 * i + 100 * j + 50 * k == A[3]:
-                res += 1
+                count += 1
 
-print(res)
+print(count)
 
 
 #5 Some Sums
@@ -63,9 +64,7 @@ a = list(map(int, input().split()))
 a.sort(reverse=True)
 Alice = sum(a[i] for i in range(0, N, 2))
 Bob = sum(a[i] for i in range(1, N, 2))
-
-result = Alice - Bob
-print(result)
+print(Alice - Bob)
 
 
 #7 Kagami Mochi
@@ -135,3 +134,18 @@ print('YES') if can else print('NO')
 
 
 #10 Traveling
+N = int(input())
+t, x, y = [0] * (N + 1), [0] * (N + 1), [0] * (N + 1)
+for i in range(N):
+    t[i + 1], x[i + 1], y[i + 1] = map(int, input().split())
+
+can = True
+for i in range(1, N + 1):
+    dt = t[i] - t[i - 1]
+    dist = abs(x[i] - x[i - 1]) + abs(y[i] - y[i - 1])
+    if dt < dist:
+        can = False
+    if dist % 2 != dt % 2:
+        can = False
+
+print('Yes') if can else print('No')
