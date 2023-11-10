@@ -70,18 +70,17 @@ print(Alice - Bob)
 #7 Kagami Mochi
 N = int(input())
 d = [int(input()) for _ in range(N)]
-
 num = [0] * 110
 
 for i in range(N):
     num[d[i]] += 1
 
-res = 0
+count = 0
 for i in range(1, 101):
-    if num[i] > 0:
-        res += 1
+    if num[i] >= 1:
+        count += 1
 
-print(res)
+print(count)
 
 #7 別解
 N = int(input())
